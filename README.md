@@ -45,18 +45,18 @@ _Code for demo implementation available here:_
     - Integration with AI / LLMs
 
 - _Methods used in the research_
-    - **Embedding generation** – The analyzed papers use machine learning models to transform text, images, or other unstructured data into high-dimensional vector representations (embeddings), which capture semantic meaning.
-    - **Similarity search** – Semantic search is performed, rather than keyword search, by comparing embeddings using distance or similarity measures to find semantically related items.
-    - **Approximate Nearest Neighbor (ANN) search** – Most approaches rely on ANN methods that improve speed while maintaining acceptable accuracy.
-    - **Indexing techniques for vectors** – The research discusses different indexing strategies, including distance-based, partition-based, graph-based, and compression-based methods, to organize vectors and reduce the number of comparisons during search.
-    - **Compression techniques** – Semantic compression is introduced to reduce memory usage and to speed up similarity search while preserving accurate results.
-    - **Hybrid search** - It allows systems to balance different goals by combining different approaches of indexing.
-    - **Graph-Augmented Retrieval** - Vectors are organized into a graph structure, where each vector is connected to a small number of its nearest neighbors, improving efficiency.
-    - **Multimodal Embeddings use** -  Combining different types of information in the same vector space  improves user experience and relevance.
-    - **Integration with AI models** – Vector databases are often used together with large language models (LLMs).
+    - Embedding generation 
+    - Similarity search 
+    - Approximate Nearest Neighbor (ANN) search
+    - Hybrid search 
+    - Indexing techniques 
+    - Compression techniques 
+    - Graph-Augmented Retrieval 
+    - Multimodal Embeddings use
+    - Integration with AI models 
       
-- Software/tools mentioned  
-- Personal understanding in simple terms  
+- _Software/tools mentioned_
+    -
 
 ## 3. System Architecture
 ### 3.1 Workflow Diagram
