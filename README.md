@@ -23,9 +23,9 @@ Text data is loaded from a .csv file (AG News dataset from Kaggle). Sentence emb
 
 This experiment aims to show that compressed embeddings can still support meaningful semantic search while reducing vector size and improving efficiency.
 
-_Video with demo for semantic compression available here:_
+_Video with demo for semantic compression available [here](https://youtu.be/MrbMIIIjclY?si=ntoZX-5pIzdzSbFz)_
 
-_Code for demo implementation available here:_
+_Code for demo implementation available [here](https://github.com/andreeaony/Vector-Databases-for-Semantic-Search/blob/main/semanticCompression.py)_
 
 _Notes:_
 - Only the first 500 news descriptions are used for demonstration.
@@ -119,18 +119,48 @@ Normalization:
 queryEmbedding /= np.linalg.norm(queryEmbedding, axis=1, keepdims=True)
 ```
 
-Semantic Search Similarity
+Semantic Search Similarity:
 ```
 scores = embeddings @ queryEmbedding.T #scalar product for cosine similarity = how similar the query is to each document
                                        #.T for transposing matching dimensions for matrix multiplication
 ```
 
 ## 5. Analysis & Interpretation
-semantic search vs keyword search
 
-example queries and retrieved results
+_**Example query 1:** Latest sports news and updates_
 
-efficiency, scalability, limitations
+<img width="1400" height="829" alt="image" src="https://github.com/user-attachments/assets/a772e90a-15ec-4bb4-8668-aa1e6c1417fc" />
+<img width="1400" height="420" alt="image" src="https://github.com/user-attachments/assets/06037327-2826-4e94-9e68-d7a797238b37" />
+<img width="1724" height="859" alt="image" src="https://github.com/user-attachments/assets/2dbc5ea6-0ac6-451d-b47b-08dd374e0edf" />
+
+
+**Interpretation:** For the full 384-dimensional embeddings, both the computation time and memory usage are relatively high. After compressing to 64 dimensions, the time drops drastically (from 17.92 sec to 0.08 sec) and memory usage decreases significantly (from 0.73 MB to 0.12 MB). Despite this compression, the recall remains high at 80%, indicating that most of the semantic information from the full embeddings is preserved. This shows that the trade-off between accuracy and efficiency is very favorable. When further compressing to 32 dimensions, memory is reduced by half again, but recall decreases to 60% compared to the full embeddings. The search time, however, remains as low as in the 64-dimensional case. This indicates that while some fine semantic detail is lost, the efficiency gains are still substantial, making dimensionality reduction a very effective approach for speeding up search with minimal impact on accuracy.
+
+
+
+_**Example query 2:** Global news and international events on politics, conflicts, and diplomacy_
+
+<img width="1400" height="872" alt="image" src="https://github.com/user-attachments/assets/64706e8e-c3a2-4328-93e9-7bf9f6a05632" />
+<img width="1400" height="419" alt="image" src="https://github.com/user-attachments/assets/66685a72-205e-491f-9227-cffcb4f20943" />
+<img width="1643" height="873" alt="image" src="https://github.com/user-attachments/assets/5a5f9b86-0ea2-40ae-bae9-00cbb8399853" />
+
+
+**Interpretation:** For this query, the recall is relatively low, remaining at 60% for both 64-dimensional and 32-dimensional embeddings. The search time is extremely fast in both cases, at 0.08 seconds, while memory usage decreases gradually, from 0.12 MB at 64 dimensions to 0.06 MB at 32 dimensions. This shows that, although further compression saves memory, the accuracy is limited by the query itself based on the stored data rather than by the dimensionality reduction. Overall, the trade-off between efficiency and recall is still clear: the search is extremely fast and memory-efficient, even if the query does not capture all relevant semantic information.
+
+
+
+_**Example query 3:** Business strategies_
+
+<img width="1400" height="883" alt="image" src="https://github.com/user-attachments/assets/c98ab8c1-d57d-42a6-a909-cfbe656bdde9" />
+<img width="1400" height="425" alt="image" src="https://github.com/user-attachments/assets/e5ab5de0-c951-477f-8fd0-2f61506eba58" />
+<img width="1716" height="844" alt="image" src="https://github.com/user-attachments/assets/c554c665-609e-4473-9198-73a2fb4dbe12" />
+
+
+**Interpretation:** For this query, the recall is excellent at 64 dimensions, reaching 100%, and remains high at 80% even after compressing to 32 dimensions. The search time is extremely low in both cases, at 0.07 seconds, while memory usage decreases from 0.12 MB at 64 dimensions to 0.06 MB at 32 dimensions. This demonstrates that a very representative query retains most of its semantic information even under heavy compression. Overall, dimensionality reduction provides a highly efficient search with minimal loss in accuracy, highlighting the favorable trade-off between speed, memory, and recall.
+
+
+_Semantic compression makes search much faster and uses less memory while keeping most of the important information. In these three examples, moving from full embeddings to 64 dimensions kept recall high, and even at 32 dimensions the results were still reasonable. Overall, compressing embeddings is a great trade-off: you get huge speed and memory improvements with only a small drop in accuracy._
+
 
 ## 6. How to run the project
 
@@ -143,6 +173,9 @@ Then, run the demo:
 ```
 python semanticCompression.py
 ```
+
+**NOTE: Wi-Fi connection is needed!**
+
 ## 7. Bibliography
 [1]  James Jie Pan, Jianguo Wang & Guoliang Li, Survey of Vector Database Management Systems, 2023, https://arxiv.org/pdf/2310.14021, Last accessed: January 2026
 
