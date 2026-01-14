@@ -81,7 +81,9 @@ def recall(fullResults, compressedResults):
     return recallValue
 
 #main
-query = "Schools near playgrounds with open green areas"
+# query = "Latest sports news and updates"
+# query = "Global news and international events on politics, conflicts, and diplomacy"
+query = "Business strategies"
 
 print("Top results using FULL embeddings:", flush=True)
 for i in search(query, fullEmbeddings):
