@@ -23,9 +23,9 @@ Text data is loaded from a .csv file (AG News dataset from Kaggle). Sentence emb
 
 This experiment aims to show that compressed embeddings can still support meaningful semantic search while reducing vector size and improving efficiency.
 
-_Video with demo for semantic compression available here:_
+_Video with demo for semantic compression available [here](https://youtu.be/MrbMIIIjclY?si=ntoZX-5pIzdzSbFz)_
 
-_Code for demo implementation available here:_
+_Code for demo implementation available [here](https://github.com/andreeaony/Vector-Databases-for-Semantic-Search/blob/main/semanticCompression.py)_
 
 _Notes:_
 - Only the first 500 news descriptions are used for demonstration.
@@ -119,7 +119,7 @@ Normalization:
 queryEmbedding /= np.linalg.norm(queryEmbedding, axis=1, keepdims=True)
 ```
 
-Semantic Search Similarity
+Semantic Search Similarity:
 ```
 scores = embeddings @ queryEmbedding.T #scalar product for cosine similarity = how similar the query is to each document
                                        #.T for transposing matching dimensions for matrix multiplication
